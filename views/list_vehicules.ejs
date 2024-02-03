@@ -1,0 +1,44 @@
+<!-- all_vehicule.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Véhicules</title>
+</head>
+<body>
+  <h1>Liste des Véhicules</h1>
+
+  <table border="1">
+    <thead>
+        <tr>
+            <th>MARQUE</th>
+            <th>MODELE</th>
+            <th>ANNE</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let vehicule of vehicules) { %>
+            <tr>
+                <td><%= vehicule.marque %></td>
+                <td><%= vehicule.modele %></td>
+                <td><%= vehicule.annee %></td>
+                <td>
+                    <form method="post" action="/users/delete_vehicule/<%= vehicule._id %>">
+                        <button type="submit">delete</button>
+                      </form>
+                </td>
+                <td>
+                    <form method="post" action="/users/update_vehicule/<%= vehicule._id %>">
+                        <button type="submit">update</button>
+                      </form>
+                </td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+</body>
+</html>
